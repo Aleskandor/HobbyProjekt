@@ -11,12 +11,9 @@ namespace Emberworld
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Utilities.Constructor(this);
             Content.RootDirectory = "Content";
         }
 
@@ -24,17 +21,12 @@ namespace Emberworld
         {
             Constants.Initialize();
 
-            graphics.PreferredBackBufferHeight = Constants.windowHeight;
-            graphics.PreferredBackBufferWidth = Constants.windowWidth;
-            graphics.ApplyChanges();
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Utilities.LoadContent(GraphicsDevice);
             Textures.LoadContent(Content);
         }
 
@@ -42,8 +34,10 @@ namespace Emberworld
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            Utilities.Update();
 
             base.Update(gameTime);
         }

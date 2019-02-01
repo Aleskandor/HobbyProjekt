@@ -11,8 +11,20 @@ namespace Emberworld
 {
     public static class Utilities
     {
+        public static GraphicsDeviceManager graphics;
         public static KeyboardState keyState, prevKeyState;
         public static MouseState mouseState, prevMouseState;
+        public static SpriteBatch spriteBatch;
+
+        public static void Constructor(Game game)
+        {
+            graphics = new GraphicsDeviceManager(game);
+        }
+
+        public static void LoadContent(GraphicsDevice graphicsDevice)
+        {
+            spriteBatch = new SpriteBatch(graphicsDevice);
+        }
 
         public static void Update()
         {
@@ -21,6 +33,15 @@ namespace Emberworld
 
             prevMouseState = mouseState;
             mouseState = Mouse.GetState();
+        }
+
+        //-------------------------
+
+        public static void SetWindowSize()
+        {
+            graphics.PreferredBackBufferHeight = Constants.windowHeight;
+            graphics.PreferredBackBufferWidth = Constants.windowWidth;
+            graphics.ApplyChanges();
         }
     }
 }

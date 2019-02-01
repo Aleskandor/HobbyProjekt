@@ -13,11 +13,22 @@ namespace Emberworld
         public static void Initialize()
         {
             tileSize = 20;
-            windowHeight = 1600;
-            windowWidth = 900;
+            windowHeight = 900;
+            windowWidth = 1600;
+            Utilities.SetWindowSize();
 
             gridSizeX = windowWidth / tileSize;
             gridSizeY = windowHeight / tileSize;
+        }
+
+        //-------------------------
+
+        public static void ChangeWindowSize(int X, int Y)
+        {
+            windowHeight = Y;
+            windowWidth = X;
+
+            Utilities.SetWindowSize();
         }
     }
 }
