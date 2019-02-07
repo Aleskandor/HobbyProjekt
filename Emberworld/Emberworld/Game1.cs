@@ -11,6 +11,8 @@ namespace Emberworld
 {
     public class Game1 : Game
     {
+        GameManager gm;
+        
         public Game1()
         {
             Utilities.Constructor(this);
@@ -20,7 +22,7 @@ namespace Emberworld
         protected override void Initialize()
         {
             Constants.Initialize();
-
+            
             base.Initialize();
         }
 
@@ -28,6 +30,7 @@ namespace Emberworld
         {
             Utilities.LoadContent(GraphicsDevice);
             Textures.LoadContent(Content);
+            gm = new GameManager();
         }
 
         protected override void UnloadContent() { }
@@ -45,7 +48,9 @@ namespace Emberworld
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            Utilities.spriteBatch.Begin();
+            gm.Draw();
+            Utilities.spriteBatch.End();
             base.Draw(gameTime);
         }
     }
