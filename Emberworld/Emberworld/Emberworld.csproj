@@ -44,6 +44,7 @@
     <Compile Include="Block.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="GrassBlock.cs" />
+    <Compile Include="WaterBlock.cs" />
     <Compile Include="StoneBlock.cs" />
     <Compile Include="DirtBlock.cs" />
     <Compile Include="Game1.cs" />

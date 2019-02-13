@@ -30,7 +30,15 @@ namespace Emberworld
                     {
                         i = Utilities.randomizer.Next(0, y - (blocks.GetLength(1) / 4));
                         if (blocks[x, y - 1] == null)
-                            blocks[x, y] = new GrassBlock(new Vector2(x * Constants.tileSize, y * Constants.tileSize));
+                        {
+                            if (x > 0)
+                            {
+                                if (i == 1 || blocks[x - 1, y].GetType() == new WaterBlock(Vector2.Zero).GetType())
+                                    blocks[x, y] = new WaterBlock(new Vector2(x * Constants.tileSize, y * Constants.tileSize));
+                                else
+                                    blocks[x, y] = new GrassBlock(new Vector2(x * Constants.tileSize, y * Constants.tileSize));
+                            }
+                        }
                         else if (y < blocks.GetLength(1) / 1.5 && (i == 0 || i == 1))
                             blocks[x, y] = new DirtBlock(new Vector2(x * Constants.tileSize, y * Constants.tileSize));
                         else 
